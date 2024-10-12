@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <!-- Add navigation here -->
+    </nav>
+
+    <div class="dashboard-container">
+        <h2>Welcome to your Dashboard</h2>
+        <p id="welcomeMessage"></p>
+        <button id="logoutBtn">Logout</button>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        let sessionUser = localStorage.getItem('sessionUser');
+        if (!sessionUser) {
+            alert('You are not logged in!');
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('welcomeMessage').textContent = 'Hello, ' + sessionUser + '!';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('sessionUser');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

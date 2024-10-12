@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css"> <!-- Reference your common stylesheet -->
+</head>
+<body>
+    <nav>
+        <!-- Add navigation here -->
+    </nav>
+    <div class="login-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="signup-username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="signup-password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+        <div id="signupResult" class="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let username = document.getElementById('signup-username').value;
+            let password = document.getElementById('signup-password').value;
+            let resultDiv = document.getElementById('signupResult');
+
+            // Here, you can simulate saving the user in localStorage (or database in production)
+            if (username && password) {
+                let userData = {username: username, password: password};
+                localStorage.setItem('user-' + username, JSON.stringify(userData));
+                resultDiv.textContent = 'User ' + username + ' successfully signed up!';
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = 'Fill in all fields!';
+                resultDiv.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
